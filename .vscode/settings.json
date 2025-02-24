@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "set": "cpp",
+        "stack": "cpp",
+        "random": "cpp",
+        "new": "cpp"
+    }
+}
