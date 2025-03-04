@@ -2,31 +2,47 @@
 
 Automate::Automate(Lexer * l) {
     lexer = l;
-    pileEtats.push(0);
-    etatInitial = State0(0);
+    etatInitial = new State0(0);
+    pileEtats.push(etatInitial);
     etatCourant = etatInitial;
-    etatFinal = State1(1);
+    etatFinal = new State1(1);
+    end = false;
 }
 
 Automate::~Automate() {
+    delete (etatInitial);
+    delete (etatFinal);
 }
 
 void Automate::decalage(Symbole * s, State * e) {
-    pileSymboles.push(*s);
-    pileEtats.push(e->getID());
+    pileSymboles.push(s);
+    pileEtats.push(e);
     lexer->Avancer();
+    etatCourant = (pileEtats.top());
 }
 
 void Automate::reduction(int n, Symbole * s) {
     for(int i=0; i<n; i++) {
         pileEtats.pop();
     }
-    pileSymboles.push(*s);
-    etatCourant = pileEtats.top();
-    etatCourant.transition(this, s);
+    pileSymboles.push(s);
+    etatCourant = (pileEtats.top());
+    etatCourant->transition(this, s);
 }
 
 void Automate::transitionSimple(Symbole * s, State * e) {
-    pileSymboles.push(*s);
-    pileEtats.push(e->getID());
+    pileEtats.push(e);
+    etatCourant = (pileEtats.top());
+}
+
+void Automate::compute(){
+    Symbole * s;
+    while(!end) {
+        s=lexer->Consulter();
+        s->Affiche();
+        cout << " - state : " << getCurrentState() ->getID() << endl;
+        getCurrentState() -> transition(this,s);
+     }
+     cout << "L'expression est correcte." << endl;
+     cout << "Resultat : " << dynamic_cast<Expression*>(getPileSymboles().top())->getResult() << endl;
 }

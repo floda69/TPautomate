@@ -30,11 +30,11 @@ class Entier : public Symbole {
 
 class Expression : public Symbole {
    public:
-      Expression() : Symbole(sizeof(Identificateurs)), result(0) { }
+      Expression() : Symbole(7), result(0) { }
       ~Expression() { }
       double eval(Expression, Symbole);
       double getResult() { return result; }
-      double setResult(double r) { result = r; }
+      void setResult(double r) { result = r; }
    protected:
       double result;
 };
