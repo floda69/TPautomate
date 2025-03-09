@@ -23,11 +23,15 @@ void Automate::decalage(Symbole * s, State * e) {
 
 void Automate::reduction(int n, Symbole * s) {
     for(int i=0; i<n; i++) {
+        State* e = pileEtats.top();
+        delete e;
         pileEtats.pop();
     }
     pileSymboles.push(s);
     etatCourant = (pileEtats.top());
+    cout<<"---Reduction---"<<endl;
     etatCourant->transition(this, s);
+    cout<<"---------------"<<endl;
 }
 
 void Automate::transitionSimple(Symbole * s, State * e) {
