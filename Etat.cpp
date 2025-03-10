@@ -285,7 +285,8 @@ void State9::transition(Automate * a, Symbole * s) {
     default:
         cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
         cout << a->getLexerHead();
-        cout << ";" << endl;        a->setEnd(true);
+        cout << ";" << endl;        
+        a->setEnd(true);
         break;
     }
 }
