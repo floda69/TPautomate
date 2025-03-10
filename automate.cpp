@@ -23,8 +23,7 @@ void Automate::decalage(Symbole * s, State * e) {
 
 void Automate::reduction(int n, Symbole * s) {
     for(int i=0; i<n; i++) {
-        State* e = pileEtats.top();
-        delete e;
+        delete pileEtats.top();
         pileEtats.pop();
     }
     pileSymboles.push(s);

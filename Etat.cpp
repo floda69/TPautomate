@@ -68,8 +68,7 @@ void State3::transition(Automate * a, Symbole * s) {
     case CLOSEPAR:
     case FIN:
         newSymbole->setResult(val->getValeur());
-        s1 = a->getPileSymboles().top();
-        delete s1;
+        delete a->getPileSymboles().top();
         a->getPileSymboles().pop();
         a->reduction(1, newSymbole);
         break;
@@ -137,9 +136,6 @@ void State7::transition(Automate * a, Symbole * s) {
     Expression* e1 ;
     Expression* e2 ;
     Symbole* op ;
-    Symbole * s1;
-    Symbole * s2;
-    Symbole * s3;
     Expression* newSymbole = new Expression();
     switch (s -> getId())
     {
@@ -147,18 +143,15 @@ void State7::transition(Automate * a, Symbole * s) {
     case CLOSEPAR:
     case FIN:
         e1 = dynamic_cast<Expression*>(a->getPileSymboles().top());
-        s1  = a->getPileSymboles().top();
-        delete s1;
-        a->getPileSymboles().pop();
+        a->getPileSymboles().pop();//on ne delete pas tout de suite les symboles car on les utilise pour calculer la nouvelle expression
         op = a->getPileSymboles().top();
-        s2 = a->getPileSymboles().top();
-        delete s2;
         a->getPileSymboles().pop();
         e2 = dynamic_cast<Expression*>(a->getPileSymboles().top());
-        newSymbole->setResult(e1->eval(*e2, *op));
-        s3 = a->getPileSymboles().top();
-        delete s3;
         a->getPileSymboles().pop();
+        newSymbole->setResult(e1->eval(*e2, *op));
+        delete e1;
+        delete e2;
+        delete op;
         a->reduction(3, newSymbole);
         break;
     case MULT:
@@ -175,9 +168,6 @@ void State8::transition(Automate * a, Symbole * s) {
     Expression* e1 ;
     Expression* e2 ;
     Symbole* op ;
-    Symbole * s1 ;
-    Symbole * s2 ;
-    Symbole * s3 ;
     Expression* newSymbole = new Expression();
     switch (s -> getId())
     {
@@ -186,18 +176,15 @@ void State8::transition(Automate * a, Symbole * s) {
         case CLOSEPAR:
         case FIN:
             e1 = dynamic_cast<Expression*>(a->getPileSymboles().top());
-            s1 = a->getPileSymboles().top();
-        delete s1;
-        a->getPileSymboles().pop();
+            a->getPileSymboles().pop();//on ne delete pas tout de suite les symboles car on les utilise pour calculer la nouvelle expression
             op = a->getPileSymboles().top();
-            s2 = a->getPileSymboles().top();
-        delete s2;
-        a->getPileSymboles().pop();
+            a->getPileSymboles().pop();
             e2 = dynamic_cast<Expression*>(a->getPileSymboles().top());
+            a->getPileSymboles().pop();
             newSymbole->setResult(e1->eval(*e2, *op));
-            s3 = a->getPileSymboles().top();
-        delete s;
-        a->getPileSymboles().pop();
+            delete e1;
+            delete e2;
+            delete op;
             a->reduction(3, newSymbole);
             break;
         default:
@@ -208,10 +195,7 @@ void State8::transition(Automate * a, Symbole * s) {
 }
 
 void State9::transition(Automate * a, Symbole * s) {
-    Expression* e ;
-    Symbole * s1 ;
-    Symbole * s2 ;
-    Symbole * s3 ; 
+    Expression* e ; 
     Expression* newSymbole = new Expression();
     switch (s -> getId())
     {
@@ -219,17 +203,14 @@ void State9::transition(Automate * a, Symbole * s) {
     case MULT:
     case CLOSEPAR:
     case FIN:
-        s1 = a->getPileSymboles().top();
-        delete s1;
+        delete a->getPileSymboles().top();
         a->getPileSymboles().pop();
         e = dynamic_cast<Expression*>(a->getPileSymboles().top());
         cout << Etiquettes[a->getPileSymboles().top()->getId()];
         newSymbole->setResult(e->getResult());
-        s2 = a->getPileSymboles().top();
-        delete s2;
+        delete a->getPileSymboles().top();
         a->getPileSymboles().pop();
-        s3 = a->getPileSymboles().top();
-        delete s3;
+        delete a->getPileSymboles().top();
         a->getPileSymboles().pop();
         a->reduction(3, newSymbole);
         break;
