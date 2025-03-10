@@ -18,7 +18,7 @@ void State0::transition(Automate * a, Symbole * s) {
     default:
         break;
     }
-    cout<<"Transition de l'etat "<<id<<endl;
+    cout<<"Transition de l'etat 0"<<endl;
 }
 
 void State1::transition(Automate * a, Symbole * s) {
@@ -59,7 +59,6 @@ void State2::transition(Automate * a, Symbole * s) {
 
 void State3::transition(Automate * a, Symbole * s) {
     Expression* newSymbole = new Expression();
-    Symbole * s1;
     Entier * val = dynamic_cast<Entier*>(a->getPileSymboles().top());
     switch (s -> getId())
     {
