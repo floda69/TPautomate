@@ -17,4 +17,4 @@ symbole.o : symbole.cpp symbole.h
 	g++ -c symbole.cpp
 
 clean :
-	rm -f main.exe *.o
+	rm -f main.exe main *.o
