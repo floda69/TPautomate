@@ -3,13 +3,16 @@
 #include "automate.h"
 
 int main(void) {
-   string chaine("(123*4+789)+2");
-
-   Lexer l(chaine);
-   Automate* a = new Automate(&l);
+   string chaine;
+   cout<<"Entrez une expression mathematique : \n";
+   cin>>chaine;
+   
+   Lexer * l= new Lexer(chaine);
+   Automate* a = new Automate(l);
    a->compute();
 
    delete a;
+   delete l;
    return 0;
 }
 

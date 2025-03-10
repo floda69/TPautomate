@@ -4,14 +4,19 @@ Automate::Automate(Lexer * l) {
     lexer = l;
     etatInitial = new State0(0);
     pileEtats.push(etatInitial);
-    etatCourant = etatInitial;
-    etatFinal = new State1(1);
+    etatCourant = pileEtats.top();
     end = false;
 }
 
 Automate::~Automate() {
-    delete (etatInitial);
-    delete (etatFinal);
+    while (pileEtats.size() > 0) {
+        delete pileEtats.top();
+        pileEtats.pop();
+    }
+    while (pileSymboles.size() > 0) {
+        delete pileSymboles.top();
+        pileSymboles.pop();
+    }
 }
 
 void Automate::decalage(Symbole * s, State * e) {
@@ -23,11 +28,14 @@ void Automate::decalage(Symbole * s, State * e) {
 
 void Automate::reduction(int n, Symbole * s) {
     for(int i=0; i<n; i++) {
+        delete pileEtats.top();
         pileEtats.pop();
     }
     pileSymboles.push(s);
     etatCourant = (pileEtats.top());
+    cout<<"---Reduction---"<<endl;
     etatCourant->transition(this, s);
+    cout<<"---------------"<<endl;
 }
 
 void Automate::transitionSimple(Symbole * s, State * e) {
