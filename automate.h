@@ -17,6 +17,7 @@ class Automate {
         State* getCurrentState() {return etatCourant;}
         void compute();
         void setEnd(bool b) {end = b;}
+        int getLexerHead() {return lexer->getTete();} 
     
     protected:
         Etats pileEtats;

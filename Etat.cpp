@@ -15,10 +15,18 @@ void State0::transition(Automate * a, Symbole * s) {
     case 7:
         a->transitionSimple(s, new State1(1));
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat "<<id<<endl;
 }
 
 void State1::transition(Automate * a, Symbole * s) {
@@ -33,10 +41,18 @@ void State1::transition(Automate * a, Symbole * s) {
     case FIN:
         a->setEnd(true);
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat 1"<<endl;
 }
 
 void State2::transition(Automate * a, Symbole * s) {
@@ -51,10 +67,18 @@ void State2::transition(Automate * a, Symbole * s) {
     case 7:
         a->transitionSimple(s, new State6(6));
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat 2" <<endl;
 }
 
 void State3::transition(Automate * a, Symbole * s) {
@@ -70,10 +94,18 @@ void State3::transition(Automate * a, Symbole * s) {
         a->getPileSymboles().pop();
         a->reduction(1, newSymbole);
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat 3"<<endl;
 }
 
 void State4::transition(Automate * a, Symbole * s) {
@@ -88,10 +120,19 @@ void State4::transition(Automate * a, Symbole * s) {
     case 7:
         a->transitionSimple(s, new State7(7));
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat 4"<<endl;
 }
 
 void State5::transition(Automate * a, Symbole * s) {
@@ -106,10 +147,18 @@ void State5::transition(Automate * a, Symbole * s) {
     case 7:
         a->transitionSimple(s, new State8(8));
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat 5"<<endl;
 }
 
 void State6::transition(Automate * a, Symbole * s) {
@@ -124,10 +173,18 @@ void State6::transition(Automate * a, Symbole * s) {
     case CLOSEPAR:
         a->decalage(s, new State9(9));
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat 6"<<endl;
 }
 
 void State7::transition(Automate * a, Symbole * s) {
@@ -152,10 +209,18 @@ void State7::transition(Automate * a, Symbole * s) {
     case MULT:
         a->decalage(s, new State5(5));
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat 7"<<endl;
 }
 
 
@@ -179,10 +244,19 @@ void State8::transition(Automate * a, Symbole * s) {
             a->getPileSymboles().pop();
             a->reduction(3, newSymbole);
             break;
+        case ERREUR:
+            cout << "Erreur : Symbole inconnu au caractere ";
+            cout << a->getLexerHead();
+            cout << ";" << endl;
+            a->setEnd(true);
+            break;
         default:
+            cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+            cout << a->getLexerHead();
+            cout << ";" << endl;
+            a->setEnd(true);
             break;
         }
-    cout<<"Transition de l'etat 8"<<endl;
 
 }
 
@@ -197,16 +271,22 @@ void State9::transition(Automate * a, Symbole * s) {
     case FIN:
         a->getPileSymboles().pop();
         e = dynamic_cast<Expression*>(a->getPileSymboles().top());
-        cout << "mamama" << endl;
-        cout << Etiquettes[a->getPileSymboles().top()->getId()];
         newSymbole->setResult(e->getResult());
-        cout << "ma" << endl;
         a->getPileSymboles().pop();
         a->getPileSymboles().pop();
         a->reduction(3, newSymbole);
         break;
+    case ERREUR:
+        cout << "Erreur : Symbole inconnu au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;
+        a->setEnd(true);
+        break;
     default:
+        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cout << a->getLexerHead();
+        cout << ";" << endl;        
+        a->setEnd(true);
         break;
     }
-    cout<<"Transition de l'etat 9"<<endl;
 }

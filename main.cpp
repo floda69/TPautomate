@@ -3,7 +3,7 @@
 #include "automate.h"
 
 int main(void) {
-   string chaine("(1+34)*123");
+   string chaine("(123*4+789)+2");
 
    Lexer l(chaine);
    Automate* a = new Automate(&l);

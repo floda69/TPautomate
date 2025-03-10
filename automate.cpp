@@ -39,10 +39,11 @@ void Automate::compute(){
     Symbole * s;
     while(!end) {
         s=lexer->Consulter();
-        s->Affiche();
-        cout << " - state : " << getCurrentState() ->getID() << endl;
         getCurrentState() -> transition(this,s);
-     }
-     cout << "L'expression est correcte." << endl;
-     cout << "Resultat : " << dynamic_cast<Expression*>(getPileSymboles().top())->getResult() << endl;
+    }
+    if (getCurrentState() ->getID() == 1 && lexer->Consulter()->getId()==FIN)
+    {
+        cout << "Resultat : " << dynamic_cast<Expression*>(getPileSymboles().top())->getResult() << endl;
+    }
+    else cout << "Terminaison anormale du programme;" << endl;
 }
