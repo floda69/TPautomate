@@ -33,9 +33,7 @@ void Automate::reduction(int n, Symbole * s) {
     }
     pileSymboles.push(s);
     etatCourant = (pileEtats.top());
-    cout<<"---Reduction---"<<endl;
     etatCourant->transition(this, s);
-    cout<<"---------------"<<endl;
 }
 
 void Automate::transitionSimple(Symbole * s, State * e) {
