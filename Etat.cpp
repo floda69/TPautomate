@@ -192,7 +192,6 @@ void State7::transition(Automate * a, Symbole * s) {
     Expression* e1 ;
     Expression* e2 ;
     Symbole* op ;
-    Expression* newSymbole = new Expression();
     switch (s -> getId())
     {
     case PLUS:       
@@ -204,11 +203,10 @@ void State7::transition(Automate * a, Symbole * s) {
         a->getPileSymboles().pop();
         e2 = dynamic_cast<Expression*>(a->getPileSymboles().top());
         a->getPileSymboles().pop();
-        newSymbole->setResult(e1->eval(*e2, *op));
-        delete e1;
+        e1->eval(*e2, *op);
         delete e2;
         delete op;
-        a->reduction(3, newSymbole);
+        a->reduction(3, e1);
         break;
     case MULT:
         a->decalage(s, new State5(5));
@@ -222,7 +220,8 @@ void State7::transition(Automate * a, Symbole * s) {
     default:
         cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
         cout << a->getLexerHead();
-        cout << ";" << endl;        a->setEnd(true);
+        cout << ";" << endl;        
+        a->setEnd(true);
         break;
     }
 }
