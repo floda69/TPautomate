@@ -8,7 +8,7 @@ Automate::Automate(Lexer * l) {
     end = false;
 }
 
-Automate::~Automate() {
+Automate::~Automate() { //on vide les piles de l'automate (i.e., l'état initial et final et l'expression résultat)
     while (pileEtats.size() > 0) {
         delete pileEtats.top();
         pileEtats.pop();
@@ -47,7 +47,7 @@ void Automate::compute(){
         s=lexer->Consulter();
         getCurrentState() -> transition(this,s);
     }
-    if (getCurrentState() ->getID() == 1 && lexer->Consulter()->getId()==FIN)
+    if (getCurrentState() ->getID() == 1 && lexer->Consulter()->getId()==FIN) //on vérifie que l'expression ait été correctement lue
     {
         cout << "Resultat : " << dynamic_cast<Expression*>(getPileSymboles().top())->getResult() << endl;
     }
