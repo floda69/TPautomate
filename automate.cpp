@@ -54,5 +54,5 @@ void Automate::compute(){
         // récupération du résultat de l'expression en haut de la pile des symboles
         cout << "Resultat : " << dynamic_cast<Expression*>(getPileSymboles().top())->getResult() << endl;
     }
-    else cout << "Terminaison anormale du programme;" << endl;
+    else cerr << "Terminaison anormale du programme;" << endl;
 }

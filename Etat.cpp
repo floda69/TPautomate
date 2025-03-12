@@ -18,15 +18,15 @@ void State0::transition(Automate * a, Symbole * s) {
         a->transitionSimple(s, new State1(1));
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;        a->setEnd(true);
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;        a->setEnd(true);
         break;
     }
 }
@@ -46,15 +46,15 @@ void State1::transition(Automate * a, Symbole * s) {
         a->setEnd(true);
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;        a->setEnd(true);
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;        a->setEnd(true);
         break;
     }
 }
@@ -74,15 +74,15 @@ void State2::transition(Automate * a, Symbole * s) {
         a->transitionSimple(s, new State6(6));
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;        a->setEnd(true);
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;        a->setEnd(true);
         break;
     }
 }
@@ -104,15 +104,15 @@ void State3::transition(Automate * a, Symbole * s) {
         a->reduction(1, newSymbole);
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;        a->setEnd(true);
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;        a->setEnd(true);
         break;
     }
 }
@@ -131,15 +131,15 @@ void State4::transition(Automate * a, Symbole * s) {
         a->transitionSimple(s, new State7(7));
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     }
@@ -160,15 +160,15 @@ void State5::transition(Automate * a, Symbole * s) {
         a->transitionSimple(s, new State8(8));
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;        a->setEnd(true);
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;        a->setEnd(true);
         break;
     }
 }
@@ -188,15 +188,15 @@ void State6::transition(Automate * a, Symbole * s) {
         a->decalage(s, new State9(9));
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;        a->setEnd(true);
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;        a->setEnd(true);
         break;
     }
 }
@@ -227,15 +227,15 @@ void State7::transition(Automate * a, Symbole * s) {
         a->decalage(s, new State5(5));
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;        
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;        
         a->setEnd(true);
         break;
     }
@@ -267,15 +267,15 @@ void State8::transition(Automate * a, Symbole * s) {
             a->reduction(3, newSymbole);
             break;
         case ERREUR:
-            cout << "Erreur : Symbole inconnu au caractere ";
-            cout << a->getLexerHead();
-            cout << ";" << endl;
+            cerr << "Erreur : Symbole inconnu au caractere ";
+            cerr << a->getLexerHead();
+            cerr << ";" << endl;
             a->setEnd(true);
             break;
         default:
-            cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-            cout << a->getLexerHead();
-            cout << ";" << endl;
+            cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+            cerr << a->getLexerHead();
+            cerr << ";" << endl;
             a->setEnd(true);
             break;
         }
@@ -304,15 +304,15 @@ void State9::transition(Automate * a, Symbole * s) {
         a->reduction(3, newSymbole);
         break;
     case ERREUR:
-        cout << "Erreur : Symbole inconnu au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;
+        cerr << "Erreur : Symbole inconnu au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;
         a->setEnd(true);
         break;
     default:
-        cout << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
-        cout << a->getLexerHead();
-        cout << ";" << endl;        
+        cerr << "Erreur : " << Etiquettes[s->getId()] << " incorrecte au caractere ";
+        cerr << a->getLexerHead();
+        cerr << ";" << endl;        
         a->setEnd(true);
         break;
     }
