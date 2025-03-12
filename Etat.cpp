@@ -3,6 +3,8 @@
 
 using namespace std;
 
+//Etat 0 E->.
+//successeur : val, (, E 
 void State0::transition(Automate * a, Symbole * s) {
     switch (s -> getId())
     {
@@ -29,6 +31,8 @@ void State0::transition(Automate * a, Symbole * s) {
     }
 }
 
+// Etat 1 : E'->E.
+// successeurs : +, *, $
 void State1::transition(Automate * a, Symbole * s) {
     switch (s -> getId())
     {
@@ -55,6 +59,8 @@ void State1::transition(Automate * a, Symbole * s) {
     }
 }
 
+// Etat 2 : E->(. 
+// successeurs : val, (, E 
 void State2::transition(Automate * a, Symbole * s) {
     switch (s -> getId())
     {
@@ -81,6 +87,8 @@ void State2::transition(Automate * a, Symbole * s) {
     }
 }
 
+// Etat 3 : E->val. 
+// successeurs : +, *, ), $
 void State3::transition(Automate * a, Symbole * s) {
     Expression* newSymbole = new Expression();
     Entier * val = dynamic_cast<Entier*>(a->getPileSymboles().top());
@@ -108,7 +116,8 @@ void State3::transition(Automate * a, Symbole * s) {
         break;
     }
 }
-
+// Etat 4 : E->E +. 
+// successeurs : +, *, $, )
 void State4::transition(Automate * a, Symbole * s) {
     switch (s -> getId())
     {
@@ -136,6 +145,8 @@ void State4::transition(Automate * a, Symbole * s) {
     }
 }
 
+// Etat 5 : E->E *. 
+// successeurs : val, (, E 
 void State5::transition(Automate * a, Symbole * s) {
     switch (s -> getId())
     {   
@@ -162,6 +173,8 @@ void State5::transition(Automate * a, Symbole * s) {
     }
 }
 
+// Etat 6 : E-> (E. 
+// successeurs : +, *, ) 
 void State6::transition(Automate * a, Symbole * s) {
     switch (s -> getId())
     {
@@ -188,6 +201,8 @@ void State6::transition(Automate * a, Symbole * s) {
     }
 }
 
+// Etat 7 : E-> E+E. 
+// successeurs : +, ), $, * 
 void State7::transition(Automate * a, Symbole * s) {
     Expression* e1 ;
     Expression* e2 ;
@@ -226,7 +241,8 @@ void State7::transition(Automate * a, Symbole * s) {
     }
 }
 
-
+// Etat 8 : E-> E*E. 
+// successeurs : +, *, ), $ 
 void State8::transition(Automate * a, Symbole * s) {
     Expression* e1 ;
     Expression* e2 ;
@@ -266,6 +282,8 @@ void State8::transition(Automate * a, Symbole * s) {
 
 }
 
+// Etat 9 : E-> (E). 
+// successeurs : +, *, ), $ 
 void State9::transition(Automate * a, Symbole * s) {
     Expression* e ; 
     Expression* newSymbole = new Expression();
