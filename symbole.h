@@ -28,6 +28,7 @@ class Entier : public Symbole {
       int valeur;
 };
 
+//Classe pour le symbole non terminal d'id 7 qui correspond à une expression comprenant son résultat
 class Expression : public Symbole {
    public:
       Expression() : Symbole(7), result(0) { }
